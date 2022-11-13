@@ -10,8 +10,8 @@
 </head>
 <body>
   <main>
-    <div class="container-form">
-      <div class="data-form">
+    <div class="container-form" id="container-form">
+      <div class="data-form" id="data-form">
         <div class="login-sesion">
           <img src="img/avatarLogin.jpg" alt="avatar">
           <h1>Iniciar Sesión</h1>
@@ -19,15 +19,15 @@
         <div class="login-form">
           <form>
             <div class="container-input">
-              <input class="email-input" type="text" name="email" id="email">
+              <input type="text" name="email" id="email">
               <span id="span-email">Email</span>
             </div>
             <div class="container-input">
-              <input class="password-input" type="password" name="password" id="password">
+              <input type="password" name="password" id="password">
               <span id="span-password">Password</span>
             </div>
             <div class="container-buttons">
-              <button type="submit">Log in</button>
+              <button type="submit" id="login">Log in</button>
               <button id="sign-up">Sign Up</button>
             </div>
           </form>
@@ -36,6 +36,6 @@
       <img src="img/login.jpg" alt="">
     </div>
   </main>
-  <script src="js/main.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
