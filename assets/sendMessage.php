@@ -14,15 +14,17 @@
     $id_user_received = $_POST["chat_message"];
     $date = date("Y-m-d H:i:s");
 
-    $sendMessage = "INSERT INTO messages(fk_id_user_message, message, fk_id_user_received, message_date)
-    VALUES('$id_user_login','$mensaje','$id_user_received','$date')";
+    $sendMessage = "INSERT INTO chats_messages (fk_id_user_message, chat, fk_id_user_received, message_date)
+    VALUES('$id_user_login', '$mensaje', '$id_user_received', '$date')";
+
 
     mysqli_query($conexion, $sendMessage);
-
+    mysqli_error($conexion);
 
     $res = [
       "ok" => true,
-      "con" => mysqli_error($conexion)
+      "id_user" => $id_user_login,
+      "id_user_chat" => $id_user_received
     ];
   }else{
     $res = [

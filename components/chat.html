@@ -7,13 +7,6 @@
       </div>
     </div>
     <div class="online_chats_user" id="online_chats_user">
-      <!-- <div id="bubble_chats">
-        <div class="chat">
-          <i class='bx bxs-user'></i>
-          <span>Cristian Alejandro Pérez Alvis</span>
-          <i class='bx bxs-send' ></i>
-        </div>
-      </div> -->
     </div>
     <div class="logout_sesion">
       <h2>CERRAR SESIÓN</h2>
@@ -25,57 +18,8 @@
       <span class="title_header_chat" id="title_header_chat">UN ESPACIO SEGURO PARA HABLAR</span>
     </div>
     <div class="online_messages">
-      <div class="bubble-container right">
-        <div class="bubble">
-          <div class="bubble-text">
-            <div>
-              <span>Este es un primer mensaje de texto con PHP</span>
-              <div class="bubble-info">3 minutes </div>
-            </div>
-          </div>
-        </div>
-        <div class="bubble">
-          <div class="bubble-text">
-            <div>
-              <span>Este es un primer mensaje</span>
-              <div class="bubble-info">3 minutes </div>
-            </div>
-          </div>
-        </div>
-        <div class="bubble">
-          <div class="bubble-text">
-            <div>
-              <span>PHP</span>
-              <div class="bubble-info">3 minutes </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="bubble-container left">
-        <div class="bubble">
-          <div class="bubble-text">
-            <div>
-              <span>Este es un primer mensaje de texto con PHP</span>
-              <div class="bubble-info">3 minutes </div>
-            </div>
-          </div>
-        </div>
-        <div class="bubble">
-          <div class="bubble-text">
-            <div>
-              <span>Este es un primer mensaje</span>
-              <div class="bubble-info">3 minutes </div>
-            </div>
-          </div>
-        </div>
-        <div class="bubble">
-          <div class="bubble-text">
-            <div>
-              <span>PHP</span>
-              <div class="bubble-info">3 minutes </div>
-            </div>
-          </div>
-        </div>
+      <div class="bubble-container" data-chat>
+        <!--- MUESTRA DE CHATS -->
       </div>
     </div>
     <div class="container-form">
@@ -95,6 +39,17 @@
       <i class='bx bxs-user'></i>
       <span id="name" class="name"></span>
       <i class='bx bxs-send' ></i>
+    </div>
+  </div>
+</template>
+
+<template id="bubble">
+  <div class="bubble">
+    <div class="bubble-text">
+      <div>
+        <span class="msg_send">Este es un primer mensaje de texto con PHP</span>
+        <div class="bubble-info">3 minutes </div>
+      </div>
     </div>
   </div>
 </template>

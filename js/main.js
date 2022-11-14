@@ -6,7 +6,7 @@ const $spanLast = document.getElementById("sign_span-lastName");
 
 let user_login;
 
-
+let send_msg;
 
 async function getLogin(){
 
@@ -69,6 +69,53 @@ async function getChats(){
 }
 
 
+async function getMessagesSend(id_login, id_chat){
+  try {
+
+    let options = {
+      method: "GET", // Metodo a realizar
+      mode: "cors"
+    }
+
+    let response = await fetch(`http://localhost/ChatMessage/assets/messages.php?lg=${id_login}&idC=${id_chat}`,options);
+    let json = await response.json();
+    console.log(json);
+    if (json.ok) {
+      // let $containerChat = document.querySelector(".bubble-container").getAttribute("data-chat");
+      let $bubble_chat = document.querySelector(".bubble-container");
+      let $template_messages = document.getElementById("bubble").content
+      let $fragment_messages = document.createDocumentFragment();
+      
+      send_msg = (localStorage.getItem("user_id") === json.id_chat);
+      (send_msg) ? $bubble_chat.classList.add("left") : $bubble_chat.classList.add("right");
+      if ($bubble_chat.classList.contains("left")) {
+        if(send_msg){
+          $bubble_chat.classList.remove("right");
+        }
+        if (!send_msg) {
+          $bubble_chat.classList.remove("left");
+        }
+      }
+      let dataMessages = await json.messages;
+        dataMessages.forEach((mensaje) => {
+          $bubble_chat.innerHTML = "";
+          $template_messages.querySelector(".msg_send").textContent = mensaje;
+          let clone = document.importNode($template_messages,true);
+          $fragment_messages.appendChild(clone);
+        });
+        $bubble_chat.appendChild($fragment_messages);
+      }
+  } catch (error) {
+    
+  }
+
+
+
+}
+
+
+
+
 
 function focusInput(e){
   if (e.target.matches(".login-form #email")) {
@@ -129,7 +176,7 @@ function getBackLogin(){
 
 
 
-document.addEventListener("click", (e) =>{
+document.addEventListener("click", async (e) =>{
   focusInput(e);
 
   if(e.target.matches("#sign-up")){
@@ -147,6 +194,7 @@ document.addEventListener("click", (e) =>{
     let divChat = document.querySelectorAll(".chat");
     let chat_name = document.getElementById("title_header_chat");
     let name_chat = e.target.querySelector(".name").textContent
+    let $containerChat = document.querySelector(".bubble-container");
 
     chat_name.textContent = name_chat;
 
@@ -155,12 +203,14 @@ document.addEventListener("click", (e) =>{
     })
     e.target.classList.add("focus");
 
-
     let $formChats = document.getElementById("form-send_messages");
     let user_id = localStorage.getItem("user_id");
 
     $formChats.chat_message.setAttribute("value", `${inputChatUser}`);
     $formChats.user_login.setAttribute("value", `${user_id}`)
+    $containerChat.dataset.chat = inputChatUser;
+    
+    getMessagesSend(user_id,inputChatUser);
 
   }
 
@@ -232,6 +282,8 @@ document.addEventListener("submit", async (e) =>{
       if(json.ok){
         console.log(json);
         text_area.value = "";
+        
+        getMessagesSend(json.id_user, json.id_user_chat);
       }
     } catch (error) {
       console.log(error);
