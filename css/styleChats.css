@@ -119,7 +119,159 @@ main .container-chat .data-user_chats .logout_sesion i:hover{
   cursor: pointer;
 }
 
+main .container-chat .data-user_messages{
+  position: relative;
+  display: grid;
+  grid-template-rows: 100px 700px 100px;
+  width:100%;
+}
+
+main .container-chat .data-user_messages .header_user_messages{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--color-door_log_out);
+  border-bottom: 2px solid #424242;
+}
+
+main .container-chat .data-user_messages .header_user_messages span{
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+main .container-chat .data-user_messages .online_messages{
+  background: var(--color-door_log_out);
+  height: 700px;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 30px;
+}
+
+main .container-chat .data-user_messages .online_messages .bubble-container{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+main .container-chat .data-user_messages .online_messages .bubble-container .bubble .bubble-text > div{
+  position: relative;
+  padding: 8px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  border-radius: 5px;
+}
+
+main .container-chat .data-user_messages .online_messages .bubble-container .bubble .bubble-text > div .bubble-info{
+  font-size: .6rem;
+  color: rgba(255, 255, 255, .7);
+  padding: 0 5px;
+  text-align: right;
+  width: 80px;
+}
+
+main .container-chat .data-user_messages .online_messages .bubble-container.right{
+  margin-left: auto;
+  width: 50%;
+  align-items: flex-end;
+}
+
+main .container-chat .data-user_messages .online_messages .bubble-container.right .bubble .bubble-text > div{
+ background: var(--color-chat_send);
+}
+
+main .container-chat .data-user_messages .online_messages .bubble-container.left{
+  margin-right: auto;
+  width: 50%;
+}
+
+main .container-chat .data-user_messages .online_messages .bubble-container.left .bubble .bubble-text > div{
+  background: var( --color-chat-received);
+  display: inline-flex;
+}
+
+
+main .container-chat .data-user_messages .online_messages .bubble-container.right .bubble .bubble-text > div{
+  color: #fff;
+}
+
+main .container-chat .data-user_messages .online_messages .bubble-container.left .bubble .bubble-text > div{
+  color: #000;
+}
+
+/* DECORACION A LAS BURBUJAS */
+main .container-chat .data-user_messages .online_messages .bubble-container.right .bubble:nth-child(1) .bubble-text > div::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -10px;
+  border-top: 7px solid var(--color-chat_send);
+  border-right: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-left: 7px solid var(--color-chat_send);
+}
+
+main .container-chat .data-user_messages .online_messages .bubble-container.left .bubble:nth-child(1) .bubble-text > div::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -10px;
+  border-top: 7px solid var(--color-chat-received);
+  border-right: 7px solid var(--color-chat-received);
+  border-bottom: 7px solid transparent;
+  border-left: 7px solid transparent;
+}
+/* FIN DECORACION A LAS BURBUJAS*/
 
 
 
+main .container-chat .data-user_messages .container-form{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
 
+main .container-chat .data-user_messages .container-form form textarea{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  resize: none;
+}
+
+main .container-chat .data-user_messages .container-form form textarea{
+  outline: none;
+  border: none;
+  background: none;
+  padding: 20px 15% 20px 20px;
+  font-size: 1rem;
+}
+
+main .container-chat .data-user_messages .container-form form button{
+
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+main .container-chat .data-user_messages .container-form form button{
+  outline: none;
+  border: none;
+  border: 1px solid var(--bg-chat_focus);
+  color: #000;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: .40s all ease-in;
+}
+
+main .container-chat .data-user_messages .container-form form button:hover{
+  cursor: pointer;
+  color: #fff;
+  background: var(--color-door_log_out);
+}
