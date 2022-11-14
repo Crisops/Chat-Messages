@@ -147,12 +147,28 @@ main .container-form .data-form .login-form form .container-buttons button{
   font-weight: 500;
 }
 
+main .container-form .data-form .login-form form .container-buttons a{
+  outline: none;
+  border: none;
+  background: transparent;
+  padding: 10px 30px;
+  font-size: 1rem; 
+  cursor: pointer;
+  font-weight: 500;
+}
+
+
 main .container-form .data-form .login-form form .container-buttons button:nth-child(1){
   border: 2px solid var(--bg-chat_focus);
   transition: .40s all ease-in;
 }
 
 main .container-form .data-form .login-form form .container-buttons button:nth-child(2){
+  border: 2px solid #D9ED92;
+  transition: .40s all ease-in;
+}
+
+main .container-form .data-form .login-form form .container-buttons a{
   border: 2px solid #D9ED92;
   transition: .40s all ease-in;
 }
@@ -166,10 +182,23 @@ main .container-form .data-form .login-form form .container-buttons button:nth-c
   background: #D9ED92;
 }
 
+main .container-form .data-form .login-form form .container-buttons a:hover{
+  background: #D9ED92;
+}
+
 main .container-form img{
  width: 100%;
  height: 100%;
  object-fit: cover;
+}
+
+a{
+  padding: 10px 30px;
+  font-size: 1rem; 
+  cursor: pointer;
+  font-weight: 500;
+  border: 2px solid #D9ED92;
+  transition: .40s all ease-in;
 }
 
 

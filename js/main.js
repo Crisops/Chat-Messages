@@ -6,9 +6,18 @@ const $spanLast = document.getElementById("sign_span-lastName");
 
 
 
+
+async function getLogin(){
+
+  let $containerForm = document.getElementById("data-form");
+  let response = await fetch("components/login.html");
+  let jsonText = await response.text(response);
+  $containerForm.outerHTML = jsonText;
+  localStorage.setItem("user", "login");
+}
+
 async function getSignUp(){
   
-
   let $containerForm = document.getElementById("data-form");
   let response = await fetch("components/sign-up.html");
   let jsonText = await response.text(response);
@@ -19,14 +28,21 @@ async function getSignUp(){
   $containerForm.outerHTML = jsonText;
 }
 
-async function getLogin(){
 
-  let $containerForm = document.getElementById("data-form");
-  let response = await fetch("components/login.html");
+async function getChats(){
+  
+  let $containerForm = document.getElementById("container-form");
+  let response = await fetch("components/chat.html");
   let jsonText = await response.text(response);
-  $containerForm.outerHTML = jsonText;
 
+  console.log(jsonText);
+
+  $containerForm.innerHTML = "";
+  $containerForm.outerHTML = jsonText;
+  localStorage.setItem("user", "user");
 }
+
+
 
 
 function focusInput(e){
@@ -82,7 +98,7 @@ function focusInput(e){
 }
 
 function getBackLogin(){
-  location.href = "http://localhost/ChatMessage/";
+  location.href = "http://127.0.0.1:5500/";
 }
 
 document.addEventListener("click", (e) =>{
@@ -91,12 +107,12 @@ document.addEventListener("click", (e) =>{
     e.preventDefault();
     getSignUp();
   }
-
 })
 
 document.addEventListener("submit", async (e) =>{
   e.preventDefault();
   let $formSignUp = document.querySelector(".sign_up_form");
+  let $formLogin = document.querySelector(".form-logIn");
 
   if (e.target === $formSignUp) {
 
@@ -120,7 +136,39 @@ document.addEventListener("submit", async (e) =>{
       console.log(error);
     }
 
-
   }
 
+  if (e.target === $formLogin) {
+    console.log($formLogin);
+    try {
+      let options = {
+        method: "POST", // Metodo a realizar
+        body: new FormData(e.target),
+        mode: "cors"
+      }
+
+      let response = await fetch("http://localhost/ChatMessage/assets/login.php", options);
+      let json = await response.json();
+    
+      if(json.ok){
+        getChats();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+})
+
+
+document.addEventListener("DOMContentLoaded", () =>{
+  if (localStorage.getItem("user") === null){ // Pregunta al localStorage si la variable "theme" esta vacia
+    localStorage.setItem("user", "login"); // Añade un valor a la variable "theme"
+  }
+  if(localStorage.getItem("user") === "login" ){
+    getLogin();
+  }
+  if(localStorage.getItem("user") === "user" ){
+    getChats();
+  }
 })
