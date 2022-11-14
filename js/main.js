@@ -107,6 +107,10 @@ document.addEventListener("click", (e) =>{
     e.preventDefault();
     getSignUp();
   }
+  if(e.target.matches(".bx.bxs-door-open")){
+    localStorage.setItem("user", null);
+    location.reload();
+  }
 })
 
 document.addEventListener("submit", async (e) =>{
