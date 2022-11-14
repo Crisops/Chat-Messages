@@ -6,14 +6,14 @@
         <img src="img/bird.png" alt="">
       </div>
     </div>
-    <div class="online_chats_user">
-      <div id="bubble_chats">
+    <div class="online_chats_user" id="online_chats_user">
+      <!-- <div id="bubble_chats">
         <div class="chat">
           <i class='bx bxs-user'></i>
           <span>Cristian Alejandro Pérez Alvis</span>
           <i class='bx bxs-send' ></i>
         </div>
-      </div>
+      </div> -->
     </div>
     <div class="logout_sesion">
       <h2>CERRAR SESIÓN</h2>
@@ -22,7 +22,7 @@
   </div>
   <div class="data-user_messages" id="data-user_messages">
     <div class="header_user_messages">
-      <span>UN ESPACIO SEGURO PARA HABLAR</span>
+      <span class="title_header_chat" id="title_header_chat">UN ESPACIO SEGURO PARA HABLAR</span>
     </div>
     <div class="online_messages">
       <div class="bubble-container right">
@@ -79,10 +79,22 @@
       </div>
     </div>
     <div class="container-form">
-      <form id="form-send_messages">
-        <textarea name="message" id="message_text" placeholder="Enter your message..."></textarea>
+      <form id="form-send_messages" class="form-send_messages">
+        <input id="input_user_login" name="user_login" type="text" hidden> <!-- EL VALOR DEL INPUT TIENE QUE SER EL ID DEL USUARIO LOGUEADO-->
+        <textarea class="message_text" name="message" id="message_text" placeholder="Enter your message..."></textarea>
+        <input id="input_user_chat" name="chat_message" type="text" hidden> <!-- EL VALOR DEL INPUT TIENE QUE SER EL ID DEL USUARIO CLIQUEABLE-->
         <button type="submit">Enviar</button>
       </form>
     </div>
   </div>
 </div>
+
+<template id="chats">
+  <div id="bubble_chats">
+    <div class="chat" id="chat" data-chat>
+      <i class='bx bxs-user'></i>
+      <span id="name" class="name"></span>
+      <i class='bx bxs-send' ></i>
+    </div>
+  </div>
+</template>

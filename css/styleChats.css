@@ -67,6 +67,7 @@ main .container-chat .data-user_chats .online_chats_user .chat{
   height: 100px;
   border-radius: 10px;
   transition: .40s all ease-in;
+  cursor: pointer;
 }
 
 
@@ -84,8 +85,7 @@ main .container-chat .data-user_chats .online_chats_user .chat span{
   font-weight: 700;
 }
 
-main .container-chat .data-user_chats .online_chats_user .chat:hover{
-  cursor: pointer;
+main .container-chat .data-user_chats .online_chats_user .chat.focus{
   background: var(--bg-chat_focus);
 }
 
